@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <h1>Your New Song</h1>
+    <form ng-submit="addSong()">
+        <div class="row">
+            <input type="text" ng-model="song" placeholder="addSong" class="form-control">
+            <div class="input-group">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-danger" ng-click="addSongRock()">Add Rock Song</button>
+                    <button type="button" class="btn btn-warning" ng-click="addSongRap()">Add Rap Song</button>
+                    <button type="button" class="btn btn-success" ng-click="addSongPop()">Add Pop Song</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- <p class="form-group" ng-repeat="song in songs track by $index">
+        <input type="text" ng-model="song" class="form-control">
+    </p>-->
+
+    <p class="form-group">
+        <input type="text" ng-repeat="song in songs track by $index" value="{{song.name}}" class="form-control" />
+    </p>
+
+    <div class="row">
+        <button type="button" class="btn btn-danger" ng-click="genreFilter = 'rock'">Filter Rock Songs</button>
+        <button type="button" class="btn btn-warning" ng-click="genreFilter = 'rap'">Filter Rap Songs</button>
+        <button type="button" class="btn btn-success" ng-click="genreFilter = 'pop'">Filter Pop Songs</button>
+    </div>
+
+
+
+
+
+</div>
