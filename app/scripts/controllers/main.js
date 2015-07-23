@@ -9,6 +9,7 @@
  */
 angular.module('musicInventoryApp')
     .controller('MainCtrl', function ($scope) {
+        $scope.genreType = null;
         $scope.songs = [
             {
                 name: 'back in black',
@@ -22,13 +23,13 @@ angular.module('musicInventoryApp')
                 name: 'money trees',
                 genre: 'rap'
             }
-    ];
+        ];
 
         $scope.addSongRock = function () {
             $scope.song = {
                 name: $scope.song,
                 genre: "rock"
-            }
+            };
             $scope.songs.push($scope.song);
             $scope.song = '';
         };
@@ -37,7 +38,7 @@ angular.module('musicInventoryApp')
             $scope.song = {
                 name: $scope.song,
                 genre: "rap"
-            }
+            };
             $scope.songs.push($scope.song);
             $scope.song = '';
         };
@@ -46,8 +47,12 @@ angular.module('musicInventoryApp')
             $scope.song = {
                 name: $scope.song,
                 genre: "pop"
-            }
+            };
             $scope.songs.push($scope.song);
             $scope.song = '';
         };
+        $scope.removeSong = function (index) {
+            $scope.songs.splice(index, 1);
+        };
+
     });

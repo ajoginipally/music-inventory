@@ -81,3 +81,21 @@ body {
     border-bottom: 0;
   }
 }
+
+.each-song {
+    padding-top: 1em;
+}
+
+.add-buttons {
+    left: 12em;
+    padding-top: 1em;
+}
+
+h1 {
+    text-align: center;
+
+}
+
+.filter-buttons {
+    left: 8em;
+}

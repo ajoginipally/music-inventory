@@ -3,12 +3,10 @@
     <form ng-submit="addSong()">
         <div class="row">
             <input type="text" ng-model="song" placeholder="addSong" class="form-control">
-            <div class="input-group">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-danger" ng-click="addSongRock()">Add Rock Song</button>
-                    <button type="button" class="btn btn-warning" ng-click="addSongRap()">Add Rap Song</button>
-                    <button type="button" class="btn btn-success" ng-click="addSongPop()">Add Pop Song</button>
-                </div>
+            <div class="btn-group add-buttons">
+                <button type="button" class="btn btn-danger" ng-click="addSongRock()">Add Rock Song</button>
+                <button type="button" class="btn btn-warning" ng-click="addSongRap()">Add Rap Song</button>
+                <button type="button" class="btn btn-success" ng-click="addSongPop()">Add Pop Song</button>
             </div>
         </div>
     </form>
@@ -16,18 +14,19 @@
         <input type="text" ng-model="song" class="form-control">
     </p>-->
 
-    <p class="form-group">
-        <input type="text" ng-repeat="song in songs track by $index" value="{{song.name}}" class="form-control" />
-    </p>
-
-    <div class="row">
-        <button type="button" class="btn btn-danger" ng-click="genreFilter = 'rock'">Filter Rock Songs</button>
-        <button type="button" class="btn btn-warning" ng-click="genreFilter = 'rap'">Filter Rap Songs</button>
-        <button type="button" class="btn btn-success" ng-click="genreFilter = 'pop'">Filter Pop Songs</button>
+    <div class="input-group each-song" ng-repeat="song in songs | switchcase:genreType  track by $index">
+        <input type="text" ng-model="song.name" class="form-control" />
+        <span class="input-group-btn">
+            <button class="btn btn-danger" type="button" ng-click="removeSong($index)">X</button>
+        </span>
     </div>
 
-
-
-
-
+    <div class="row">
+        <div class="btn-group add-buttons filter-buttons" class="col-xs-12">
+            <button type="button" class="btn btn-danger" ng-click="genreType = 'rock'">Filter Rock Songs</button>
+            <button type="button" class="btn btn-warning" ng-click="genreType = 'rap'">Filter Rap Songs</button>
+            <button type="button" class="btn btn-success" ng-click="genreType = 'pop'">Filter Pop Songs</button>
+            <button type="button" class="btn btn-primary" ng-click="genreType = null">Show All</button>
+        </div>
+    </div>
 </div>
