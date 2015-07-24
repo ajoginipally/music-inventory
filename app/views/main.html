@@ -13,12 +13,27 @@
     <!-- <p class="form-group" ng-repeat="song in songs track by $index">
         <input type="text" ng-model="song" class="form-control">
     </p>-->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="input-group each-song" ng-repeat="song in songs | switchcase:genreType  track by $index">
+                <input type="text" ng-model="song.name" class="form-control" />
+                <div class="dropdown input-group-btn">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                        {{song.genre}}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a ng-click="song.genre = 'rock'">Rock</a></li>
+                        <li><a ng-click="song.genre = 'rap'">Rap</a></li>
+                        <li><a ng-click="song.genre = 'pop'">Pop</a></li>
+                    </ul>
 
-    <div class="input-group each-song" ng-repeat="song in songs | switchcase:genreType  track by $index">
-        <input type="text" ng-model="song.name" class="form-control" />
-        <span class="input-group-btn">
-            <button class="btn btn-danger" type="button" ng-click="removeSong($index)">X</button>
-        </span>
+                </div>
+                <span class="input-group-btn">
+                    <button class="btn btn-danger" type="button" ng-click="removeSong($index)">X</button>
+                </span>
+            </div>
+        </div>
     </div>
 
     <div class="row">
